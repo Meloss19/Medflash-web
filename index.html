@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MedFlash</title>
+  <link rel="stylesheet" href="vendor/phosphor/regular/style.css" />
+  <link rel="stylesheet" href="vendor/phosphor/fill/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="MedFlash app">
+
+    <aside class="sidebar" aria-label="Sidebar mazos">
+      <div class="brand">
+        <div class="logo">MF</div>
+        <div>
+          <h2>MedFlash</h2>
+          <div class="small">Estudia inteligente. Recuerda más.</div>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="scroll-area">
+          <!-- Crear mazo -->
+          <div style="margin-top:12px">
+            <label class="crear-mazo" for="new-deck">Crear nuevo mazo</label>
+            <div class="row">
+              <input id="new-deck" type="text" placeholder="Nombre del mazo...">
+              <button class="btn" id="create-deck-btn">Crear</button>
+            </div>
+          </div>
+
+          <!-- Lista de mazos -->
+          <div class="deck-section" style="margin-top:14px">
+            <label>Mazos</label>
+            <div class="deck-search">
+              <span class="deck-search-icon" aria-hidden="true"></span>
+              <input id="deck-search" type="text" placeholder="Buscar mazo...">
+            </div>
+            <div class="deck-list" id="deck-list" role="list"></div>
+          </div>
+        </div>
+
+        <!-- Área inferior: controles -->
+        <div class="bottom-area">
+          <div class="controls" style="margin-top:12px; margin-left:-3px">
+            <label>Guardar / Cargar</label>
+
+            <div class="row">
+              <button class="btn secondary" id="export-json">Exportar mazos</button>
+               <button class="btn primary" id="settings-btn">Configuración</button>
+            </div>
+
+            <div class="row" style="margin-top:8px">
+              <input id="import-file" class="import-input" type="file" accept=".json" style="display:none" />
+              <button class="btn secondary" id="import-json-btn">Cargar mazos</button>
+              <button class="btn warn" id="clear-all">Borrar todo</button>
+            </div>
+
+          </div>
+
+          
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main-ui">
+      <div class="medicine-float">⚕️</div>
+
+      <div class="deck-header">
+        <h3 id="selected-deck-title">Selecciona un mazo</h3>
+        <p id="deck-sub">No hay mazo seleccionado</p>
+      </div>
+
+      <div class="content">
+        <section>
+          <!-- Contenido principal de estudio -->
+          <div id="study-main">
+            <div class="study-area" id="study-area">
+              <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-pressed="false">
+                <div class="meta" id="card-meta"></div>
+                <div id="card-text">No hay cartas. Crea un mazo y añade tarjetas.</div>
+              </div>
+
+              <div class="study-controls-horizontal">
+                <div class="control-left">
+                  <button class="small-btn btn-icon" id="edit-btn"><i class="ph ph-pencil-simple" aria-hidden="true"></i><span>Editar</span></button>
+                  <button class="small-btn btn-icon" id="delete-btn"><i class="ph ph-trash" aria-hidden="true"></i><span>Eliminar</span></button>
+                </div>
+
+                <div class="progress-center">
+                  <span class="muted" id="progress">0 / 0 tarjetas</span>
+                </div>
+
+                <div class="control-middle">
+                  <button class="small-btn btn-icon" id="prev-btn"><i class="ph ph-arrow-counter-clockwise" aria-hidden="true"></i><span>Anterior</span></button>
+                  <button class="small-btn btn-icon" id="next-btn"><i class="ph ph-arrow-clockwise" aria-hidden="true"></i><span>Siguiente</span></button>
+                </div>
+
+                <div class="control-right">
+                  <button class="small-btn difficulty-btn" id="very-hard-btn"><span>Muy difícil</span></button>
+                  <button class="small-btn difficulty-btn" id="hard-btn"><span>Difícil</span></button>
+                  <button class="small-btn difficulty-btn" id="easy-btn"><span>Fácil</span></button>
+                  <button class="small-btn difficulty-btn" id="very-easy-btn"><span>Muy fácil</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido de configuración -->
+          <div id="settings-content" style="display:none; padding:20px;">
+            <h2 id="config-title">Configuración de la app</h2>
+            <button id="back-to-main" class="btn secondary">Volver</button>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">&copy; 2026 Medflash.</footer>
+    </main>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- JS -->
+   <script src="crypto-js.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
